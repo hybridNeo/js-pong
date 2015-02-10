@@ -1,0 +1,32 @@
+div#bat1{
+	width:10px;
+	height:130px;
+	position:absolute;
+	top:1%;
+	left:1%;
+	background-color:black;
+}
+div#bat2{
+	width:10px;
+	height:130px;
+	position:absolute;
+	top:1%;
+	left:900px;
+	background-color:black;
+}
+div#text{
+	position:absolute;
+	left:2%;
+	font-size: 500%;
+	top:0%;
+}
+#b1{
+	position:absolute;
+	bottom:10px;
+	left:45%;
+}
+#score{
+	position:absolute;
+	bottom:40px;
+	left:48%;
+}
