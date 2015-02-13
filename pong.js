@@ -78,35 +78,39 @@ function follow(event){
     var map = []; //to store multiple keyPresses
     document.onkeydown = document.onkeyup = function(e){
         e = e || window.event;
-        
-
-        switch(e.which){
-                case 38: //up
-                bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) - 10) + 'px';
-                break;
-
-                case 40: //down
-                bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) + 10) + 'px';
-                break;
-
-                case 87: //'w' key
-                bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) - 10) + 'px';
-                break;
-
-                case 83: //'s' key
-                bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) + 10) + 'px';
-                break;
-            }
-            
+        map[e.which] = e.type == 'keydown';
+        if(map[38] && map[87]){// Left: up Right:up
+           bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) - 10) + 'px';
+           bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) - 10) + 'px';
+        }else if(map[40] && map[87]){ // Left: up Right: down
+            bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) + 10) + 'px';
+            bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) - 10) + 'px';
+        }else if(map[38] && map[83]){ //Left: down Right:up
+            bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) - 10) + 'px';
+            bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) + 10) + 'px';
+        }else if(map[40] && map[83]){ //Left: down Right:down
+            bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) + 10) + 'px';
+            bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) + 10) + 'px';
+        }else if(map[38]){
+            bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) - 10) + 'px';
+        }else if(map[40]){
+            bat2.style.top = ((parseInt(bat2.style.top, 10) || 0) + 10) + 'px';
+        }else if(map[87]){
+            bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) - 10) + 'px';
+        }else if(map[40]){
+            bat1.style.top = ((parseInt(bat1.style.top, 10) || 0) + 10) + 'px';
         }
 
-        x=0,y=0,w=200,h=200;
-        text = document.getElementById("text");
-        bat1 = document.getElementById("bat1");
-        bat2 = document.getElementById("bat2");
-        dx=5,dy=5;
-        interval =10;
-        id_timeout = setInterval(move,interval);
-
-
+            
     }
+
+    x=0,y=0,w=200,h=200;
+    text = document.getElementById("text");
+    bat1 = document.getElementById("bat1");
+    bat2 = document.getElementById("bat2");
+    dx=5,dy=5;
+    interval =10;
+    id_timeout = setInterval(move,interval);
+
+
+}
